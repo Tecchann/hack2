@@ -268,7 +268,6 @@ Tu README debe incluir:
 - Este proyecto es exclusivamente para plataforma web
 - Deberán usar **React** con **TypeScript** obligatoriamente
 - **Tailwind CSS** es requerido para los estilos
-- No se permite el uso de librerías de componentes completas (Material-UI, Ant Design, etc.) - deben construir sus propios componentes
 - La API está preconfigurada y lista para usar como "caja negra"
 - El tiempo máximo es de **2 horas**
 - Trabajarán en equipos de **4-5 estudiantes**
@@ -290,3 +289,27 @@ Para dudas o soporte durante la hackathon, utilicen el canal oficial de Discord.
 
 **Con cariño,**
 **El equipo de CS2031** ❤️
+
+## Ejecutar la aplicación localmente (rápido)
+
+Sigue estos pasos para ejecutar la plantilla frontend que contiene esta repo:
+
+1. Instala dependencias:
+
+```bash
+npm install
+```
+
+2. Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+3. Abre `http://localhost:5173` en tu navegador.
+
+Notas:
+- La aplicación es una plantilla mínima (Vite + React + TypeScript + Tailwind). Debes ejecutar `npm install` para instalar dependencias.
+- La URL de la API ya está configurada en `src/services/api.ts`.
+- Completa las pantallas y componentes según las secciones del README principal.
+
