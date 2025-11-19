@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE = 'https://cs2031-2025-2-hackathon-2-backend-production.up.railway.app/v1'
+const BASE = (import.meta.env.VITE_API_BASE as string) || '/v1'
 
 const instance = axios.create({
   baseURL: BASE,
