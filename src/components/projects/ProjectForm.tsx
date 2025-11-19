@@ -7,7 +7,7 @@ export default function ProjectForm({ onCreated }: any) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       await projectService.createProject({ name, description, status: 'ACTIVE' })
@@ -24,11 +24,11 @@ export default function ProjectForm({ onCreated }: any) {
       <h3 className="mb-2">Nuevo Proyecto</h3>
       <label className="block mb-2">
         <div className="text-sm">Nombre</div>
-        <Input value={name} onChange={(e) => setName(e.target.value)} />
+        <Input value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
       </label>
       <label className="block mb-4">
         <div className="text-sm">Descripción</div>
-        <Input value={description} onChange={(e) => setDescription(e.target.value)} />
+        <Input value={description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)} />
       </label>
       <Button type="submit">Crear</Button>
     </form>

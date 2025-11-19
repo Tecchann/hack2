@@ -9,7 +9,7 @@ export default function RegisterForm() {
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState<string | null>(null)
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setMessage(null)
     try {
@@ -26,15 +26,15 @@ export default function RegisterForm() {
       {message && <div className="text-green-600 mb-2">{message}</div>}
       <label className="block mb-2">
         <div className="text-sm">Nombre</div>
-        <Input value={name} onChange={(e) => setName(e.target.value)} />
+        <Input value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
       </label>
       <label className="block mb-2">
         <div className="text-sm">Email</div>
-        <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <Input value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
       </label>
       <label className="block mb-4">
         <div className="text-sm">Contraseña</div>
-        <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input type="password" value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
       </label>
       <Button type="submit">Registrar</Button>
     </form>

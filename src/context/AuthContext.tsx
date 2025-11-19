@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import api from '../services/api'
+import api, { setToken as apiSetToken } from '../services/api'
 
 type User = { id: string; email: string; name: string } | null
 
@@ -12,8 +12,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const stored = localStorage.getItem('tf_token')
     if (stored) {
+      // set axios header
+      apiSetToken(stored)
       setToken(stored)
-      api.setToken(stored)
       // fetch profile
       api.get('/auth/profile').then((res) => setUser(res.data)).catch(() => {
         setUser(null)
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const res = await api.post('/auth/login', { email, password })
     const t = res.data.token
     localStorage.setItem('tf_token', t)
-    api.setToken(t)
+    apiSetToken(t)
     setToken(t)
     setUser(res.data.user)
   }
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem('tf_token')
     setUser(null)
     setToken(null)
-    api.setToken(null)
+    apiSetToken(null)
   }
 
   return (

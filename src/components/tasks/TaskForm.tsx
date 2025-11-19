@@ -8,7 +8,7 @@ export default function TaskForm({ onCreated }: any) {
   const [description, setDescription] = useState('')
   const [projectId, setProjectId] = useState('')
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       await taskService.createTask({ title, description, projectId, priority: 'MEDIUM', status: 'TODO' })
@@ -25,15 +25,15 @@ export default function TaskForm({ onCreated }: any) {
       <h3 className="mb-2">Nueva Tarea</h3>
       <label className="block mb-2">
         <div className="text-sm">Título</div>
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <Input value={title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} />
       </label>
       <label className="block mb-2">
         <div className="text-sm">Descripción</div>
-        <Input value={description} onChange={(e) => setDescription(e.target.value)} />
+        <Input value={description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)} />
       </label>
       <label className="block mb-4">
         <div className="text-sm">Project ID (opcional)</div>
-        <Input value={projectId} onChange={(e) => setProjectId(e.target.value)} />
+        <Input value={projectId} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProjectId(e.target.value)} />
       </label>
       <Button type="submit">Crear Tarea</Button>
     </form>
