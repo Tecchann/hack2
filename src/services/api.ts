@@ -14,11 +14,8 @@ const setToken = (token: string | null) => {
   else delete instance.defaults.headers.common['Authorization']
 }
 
-export default {
-  get: instance.get,
-  post: instance.post,
-  put: instance.put,
-  patch: instance.patch,
-  delete: instance.delete,
-  setToken,
-}
+// also export setToken as named export for type-safe imports
+export { setToken }
+
+// keep default export as axios instance
+export default instance
